@@ -1,0 +1,62 @@
+/* 전체 선택자: 모든 요소에 적용 */
+* {
+    font-family: 'Arial', sans-serif; /* 글꼴 지정 */
+    box-sizing: border-box; /* 박스 모델 설정: padding과 border를 너비에 포함 */
+}
+
+/* id 선택자: #introduce, #funfacts */
+#introduce {
+    background-color: #f0f8ff; /* 연한 하늘색 배경 */
+    border: 2px solid #add8e6; /* 테두리: 2px 두께, 연한 파란색, 실선 */
+    padding: 20px; /* 내부 여백 */
+    margin-bottom: 20px; /* 아래쪽 바깥 여백 */
+}
+
+#funfacts {
+    background-color: #fffacd; /* 레몬색 배경 */
+    border: 2px dashed #ffd700; /* 테두리: 2px 두께, 금색, 점선 */
+    padding: 15px;
+    margin-top: 20px;
+}
+
+/* 요소 선택자: h1, h2, p, img */
+h1 {
+    color: #4682b4; /* 제목 색상: 스틸블루 */
+    text-align: center; /* 텍스트 정렬 */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* 텍스트 그림자 */
+}
+
+h2 {
+    color: #556b2f; /* 제목 색상: 다크올리브그린 */
+    border-bottom: 1px solid #556b2f; /* 하단 테두리 */
+    padding-bottom: 5px;
+}
+
+p {
+    color: rgb(51, 51, 51); /* 글자 색상: 어두운 회색 */
+    line-height: 1.6; /* 줄 간격 */
+}
+
+img {
+    display: block; /* 블록 요소로 변경 */
+    margin: 0 auto; /* 중앙 정렬 */
+    border-radius: 50%; /* 이미지를 원형으로 만듦 */
+    border: 3px solid #1494c3; /* 테두리: 3px 두께, 밝은 산호색, 실선 */
+}
+
+/* 클래스 선택자: mark, strong, em */
+mark {
+    background-color: #ffb6c1; /* 마크 색상: 연한 분홍색 */
+    padding: 2px 5px; /* 내부 여백 */
+    border-radius: 3px;
+}
+
+strong {
+    color: #3c8b00; /* 글자 색상: 진한 빨강 */
+    font-weight: bold;
+}
+
+em {
+    color: #008080; /* 글자 색상: 청록색 */
+    font-style: italic;
+}
