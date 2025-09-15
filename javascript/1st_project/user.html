@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>사용자 정보 입력받고 출력하기</title>
+</head>
+<style>
+  #name {
+    color: darkgreen;
+  }
+
+  #url_button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px; /* 모서리를 둥글게 만듭니다 */
+    background-color: #FF1A47; /* 유투브 빨강 */
+    color: white; /* 흰색 글씨 */
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s; /* 색상 변화를 부드럽게 만듭니다 */
+  }
+
+.basic-button:hover {
+    background-color: #c4302b; /* 마우스를 올렸을 때 더 진한 빨간색 */
+}
+
+.basic-button:active {
+    background-color: #c4302b; /* 클릭했을 때의 색상 */
+}
+
+
+</style>
+<body>
+  <h1 id="name"></h1>
+  <p id="hobby"></p>
+  <p id="favorite-song"></p>
+  
+  <script>  
+    const nameElement = document.querySelector("#name")
+    let name = prompt("당신의 이름은?")
+    nameElement.textContent = name
+    
+    const hobbyElement = document.querySelector("#hobby")
+    let hobby = prompt("당신의 취미는?")
+    hobbyElement.textContent = `취미는 ${hobby} 입니다.`
+    
+    const song = prompt("좋아하는 곡은?")
+    const favorite_song = document.getElementById('favorite-song')
+    favorite_song.textContent = `즐겨듣는 곡은 ${song} 입니다.`
+    
+    const animal = document.body.appendChild(document.createElement("p"))
+    animal.id = "animal"
+    document.querySelector("#animal").textContent = `좋아하는 동물은 ${prompt("좋아하는 동물은?")} 입니다.`
+    
+    const fruit = document.body.appendChild(document.createElement("p"))
+    fruit.id = "fruit"
+    document.querySelector("#fruit").textContent = `좋아하는 과일은 ${prompt("좋아하는 과일은?")} 입니다.`
+    
+    // favorite_song을 body의 마지막 순서로 변경합니다.
+    document.body.appendChild(favorite_song)
+
+    const button = document.body.appendChild(document.createElement("button"))
+    button.id = "url_button"
+    button.textContent = `${song}`;
+
+    // YouTube Data API 키
+    const apiKey = 'AIzaSyAV7m1Rz_lX_RuRSv8Lkbgq0Le4rr2YDdU';
+    
+    button.addEventListener('click', searchYouTubeAndPlayFirstVideo);
+    
+    
+    // 유튜브 API를 호출하여 첫 번째 동영상을 찾고 재생하는 함수
+  function searchYouTubeAndPlayFirstVideo() {
+    const url = `https://www.googleapis.com/youtube/v3/search?part=snippet&q=${song}&maxResults=1&type=video&key=${apiKey}`;
+    fetch(url)
+      .then(response => response.json())
+      .then(data => {
+        const firstVideoId = data.items[0].id.videoId;
+        console.log('첫 번째 동영상 ID:', firstVideoId);
+
+        // 동영상 ID를 사용하여 페이지 이동 또는 동영상 임베드
+        // 예: 새 탭에서 동영상 열기
+        window.open(`https://www.youtube.com/watch?v=${firstVideoId}`, '_blank');
+      })
+      .catch(error => {
+        console.error('API 호출 중 오류 발생:', error);
+      });
+  }
+    </script>
+</body>
+</html>
